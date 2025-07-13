@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #root{
   height: 100vh;
   width: 100vw;
@@ -11,3 +12,16 @@
   justify-content: space-between;
   border: 1px solid white;
 }
+=======
+@import "tailwindcss";
+.card_container{
+  background: purple;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+
+}
+
+>>>>>>> fdb9d57f01147b89d1419553d34cc8f8cfb6f3d0

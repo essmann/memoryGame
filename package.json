@@ -10,7 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "hamburger-react": "^2.5.2",
+=======
+    "@tailwindcss/vite": "^4.1.11",
+    "lucide-react": "^0.525.0",
+>>>>>>> fdb9d57f01147b89d1419553d34cc8f8cfb6f3d0
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
@@ -19,10 +24,19 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
+<<<<<<< HEAD
+=======
+    "autoprefixer": "^10.4.21",
+>>>>>>> fdb9d57f01147b89d1419553d34cc8f8cfb6f3d0
     "eslint": "^9.30.1",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+<<<<<<< HEAD
+=======
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+>>>>>>> fdb9d57f01147b89d1419553d34cc8f8cfb6f3d0
     "vite": "^7.0.4"
   }
 }
