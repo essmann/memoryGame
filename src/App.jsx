@@ -15,11 +15,14 @@ function App() {
   const columns = 5;
   const gameViewRef = useRef(null);
   
+  var initialColValue = Math.floor(window.innerWidth / (50 + 10*2));
+  var initialRowValue = Math.floor(window.innerHeight / (75 + 10*2));
 
-  const [columnCardCount, setColumnCardCount] = useState(0);
-  const [rowCardCount, setRowCardCount] = useState(0);
+
+
   
-  const [canGenerateCards, setCanGenerateCards] = useState(false);  
+  
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,9 +37,6 @@ function App() {
 
       cardsPerRow = Math.floor(cardsPerRow);
       cardsPerColumn = Math.floor(cardsPerColumn);
-
-      setColumnCardCount(cardsPerColumn);
-      setRowCardCount(cardsPerRow);
 
       console.log(`Cards per row: ${cardsPerRow}, Cards per column: ${cardsPerColumn}`);
     };
@@ -90,16 +90,24 @@ function App() {
 
   return allRows;
 }
-  function clearCards(){
-
-  }
+  function clearCards() {
+  var cards = gameViewRef.current.children[0].children;
+  console.log(cards);
+  cards = Array.from(cards);
+  cards.forEach(card => {
+    console.log(card);
+    // If you want to remove the card from DOM, uncomment the next line:
+    card.remove();
+    
+  });
+}
   return (
     <>
-     <Header cards="" cols = {columnCardCount} rows = {rowCardCount}/>
+     <Header cards="" cols = {2} rows = {2} clearCards = {clearCards}/>
      <div className='gameView' ref={gameViewRef}>
         <div className='card_container'>
           {/* {generateCards(8)} */}
-          {seedCards(columnCardCount*rowCardCount).map((card, index) => (
+          {seedCards(initialColValue * initialRowValue).map((card, index) => (
   <Card key={index} />
 ))}
 
