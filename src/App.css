@@ -1,5 +1,5 @@
 body{
-
+  overflow-y: hidden;
 }
 #root{
   height: 100vh;
@@ -16,6 +16,10 @@ body{
   border: 1px solid white;
 }
 
+.new_cards{
+  margin-left: auto;
+  
+}
 .scoreCount{
   font-size: 1.5em;
   margin-left: 15px;
@@ -37,9 +41,7 @@ body{
   flex-direction: column;
   
   height: 100%;
-  background: purple;
-  
-}
+background: linear-gradient(135deg, #2e2e2e, #3c2a4d, #1a1a1a);}
 
 /* CARD CONTAINER */
 .card_container {
@@ -48,7 +50,7 @@ body{
   gap: 0px; /* No gap at all */
   height: auto;
   border: 1px solid green;
-  background: green;
+   
   align-items: center;
   justify-content: center;
 }
@@ -57,8 +59,8 @@ body{
 /* CARD */
 
 .card {
-  width: 150px;
-  height: 200px;
+  width: 50px;
+  height: 75px;
   margin: 0;
   padding: 0;
   background: white;
