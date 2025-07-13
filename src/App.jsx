@@ -7,24 +7,30 @@ import CardContainer from './components/CardContainer'
 import Card from './components/Card'
 import { useEffect } from 'react'
 import { useRef } from 'react'
+  import { useLayoutEffect } from 'react';
+
 function App() {
   const [count, setCount] = useState(0)
   const rows = 8;
   const columns = 5;
   const gameViewRef = useRef(null);
+  
 
   const [columnCardCount, setColumnCardCount] = useState(0);
   const [rowCardCount, setRowCardCount] = useState(0);
- useEffect(() => {
+  
+  const [canGenerateCards, setCanGenerateCards] = useState(false);  
+
+  useEffect(() => {
     const handleResize = () => {
-      let cardWidth = gameViewRef.current.children[0].children[0].offsetWidth;
-      let cardHeight = gameViewRef.current.children[0].children[0].offsetHeight;
+      let cardWidth = 50;
+      let cardHeight = 75;
       let horizontalCardMargin = 10;
       console.log(`Viewport changed: ${window.innerWidth} x ${window.innerHeight}`);
       console.log(`Card size: width: ${cardWidth}px, height: ${cardHeight}px`);
       
       let cardsPerRow = window.innerWidth/(cardWidth+horizontalCardMargin*2);
-      let cardsPerColumn = window.innerHeight/cardHeight;
+      let cardsPerColumn = window.innerHeight/(cardHeight+horizontalCardMargin*2);
 
       cardsPerRow = Math.floor(cardsPerRow);
       cardsPerColumn = Math.floor(cardsPerColumn);
@@ -46,6 +52,8 @@ function App() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+ 
   //these statistics vary on screen size etc.
  function seedCards(number){
   const cards = [];
@@ -82,9 +90,12 @@ function App() {
 
   return allRows;
 }
+  function clearCards(){
+
+  }
   return (
     <>
-     <Header cards=""/>
+     <Header cards="" cols = {columnCardCount} rows = {rowCardCount}/>
      <div className='gameView' ref={gameViewRef}>
         <div className='card_container'>
           {/* {generateCards(8)} */}
