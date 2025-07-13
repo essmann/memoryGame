@@ -1,12 +1,18 @@
 import Hamburger from 'hamburger-react'
 import { useState } from 'react';
 import { useEffect } from 'react';
- function generateCardsToFitViewPort(){
-        
-    }
-function Header({cards, cols, rows, clearCards}) {
+import RangeSlider from 'react-range-slider-input';
 
-   
+ 
+function Header({setNumCards, settings}) {
+
+    function test(input){
+    
+    var value = input.target.value;
+    setNumCards(value);
+}  
+    var row = Math.floor(window.innerWidth / (50 + 10*2));
+     var col = Math.floor(window.innerHeight / (75 + 10*2));
 
     const [dropDownOpen, setDropDownOpen] = useState(false)
     useEffect(()=>{
@@ -14,9 +20,9 @@ function Header({cards, cols, rows, clearCards}) {
     }, [dropDownOpen]); // This effect runs when dropDownOpen changes, you can add logic here if needed
     return (
         <div id="header" className="">
-            <div className='scoreCount' id='player_1_score'>{rows}</div>
-            <div className='scoreCount' id='player_2_score'>{cols}</div>
-            <button className='new_cards' onClick={clearCards}>New Cards</button>
+            <div className='scoreCount' id='player_1_score'>{row}</div>
+            <div className='scoreCount' id='player_2_score'>{col}</div>
+          
             <Hamburger  toggled={dropDownOpen} toggle={setDropDownOpen} />
             
         </div>

@@ -1,5 +1,9 @@
 body{
   overflow-y: hidden;
+    overflow-x: hidden;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 #root{
   height: 100vh;
@@ -13,7 +17,8 @@ body{
   display: flex;
   align-items: center;
   background: rgb(31, 30, 21);
-  border: 1px solid white;
+  margin: 0;
+  padding: 0;
 }
 
 .new_cards{
@@ -36,21 +41,23 @@ body{
 }
 
 /* GAME VIEW */
-.gameView{
+.card_container_wrapper{
   display: flex;
   flex-direction: column;
-  
+  align-items: center;
+  justify-content: center;
   height: 100%;
-background: linear-gradient(135deg, #2e2e2e, #3c2a4d, #1a1a1a);}
+background: linear-gradient(135deg, #681111, #3c2a4d, #1a1a1a);}
 
 /* CARD CONTAINER */
 .card_container {
   display: flex;
+   width: 100%;
+  
   flex-wrap: wrap;
   gap: 0px; /* No gap at all */
   height: auto;
-  border: 1px solid green;
-   
+  margin-bottom: 1.5rem;
   align-items: center;
   justify-content: center;
 }
@@ -59,10 +66,25 @@ background: linear-gradient(135deg, #2e2e2e, #3c2a4d, #1a1a1a);}
 /* CARD */
 
 .card {
-  width: 50px;
-  height: 75px;
-  margin: 0;
-  padding: 0;
-  background: white;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    height:75px;
+    border-radius: 12px;
+
+    background: linear-gradient(145deg, #751616, #0f0f0f, #1c1c1c);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 55px;
+    margin: 10px;
+}
+
+/* LANDSCAPE ROTATION PHONE */
+ @media screen and (orientation:landscape)  {
+  /* Styles for phones in landscape */
+  .card_container {
+    display: grid;
+  grid-template-columns: repeat(10, 1fr); /* 10 equal columns */
+  grid-template-rows: repeat(3, auto);   /* 3 rows, height automatic */
+  gap: 10px;  
+  }
 }
