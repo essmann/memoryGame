@@ -12,7 +12,12 @@ body{
 }
 
 /* HEADER */
-
+#header_title{
+  font-size: 1.5em;
+  color: #F6645C;
+  margin-left: 15px;
+  font-family: 'Courier New', Courier, monospace;
+}
 #header{
   display: flex;
   align-items: center;
@@ -60,6 +65,7 @@ background: linear-gradient(135deg, #681111, #3c2a4d, #1a1a1a);}
   margin-bottom: 1.5rem;
   align-items: center;
   justify-content: center;
+  margin-bottom: 4rem;
 }
 
 
@@ -78,6 +84,15 @@ background: linear-gradient(135deg, #681111, #3c2a4d, #1a1a1a);}
     margin: 10px;
 }
 
+.card.flipped {
+  /* show front face */
+  transform: rotateY(180deg);
+}
+.card.matched {
+  /* maybe lower opacity or disable pointer */
+  opacity: 0.6;
+  pointer-events: none;
+}
 /* LANDSCAPE ROTATION PHONE */
  @media screen and (orientation:landscape)  {
   /* Styles for phones in landscape */

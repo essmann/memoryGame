@@ -1,8 +1,11 @@
 import "./Card.css";
-function Card() {
+import { useState } from "react";
+function Card({ id, icon, flipped, matched }) {
+    
+
     return (  
         
-            <div className="card">
+            <div className="card" onClick={() => console.log("Card clicked: " + id)}>
             </div>
         
     );
