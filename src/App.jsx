@@ -165,7 +165,7 @@ const handleClick = async (index) => {
 
   return (
     <>
-      <Header setNumCards={setNumCards} settings={GLOBAL_SETTINGS} currentPlayer = {currentPlayer} score = {playerScores} showHint = {showHint}/>
+      <Header setNumCards={setNumCards} settings={GLOBAL_SETTINGS} currentPlayer = {currentPlayer} score = {playerScores} showHint = {showHint} resetGame ={resetGame}/>
 
       <div className='card_container_wrapper'>
         <div className='card_container'>

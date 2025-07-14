@@ -83,6 +83,12 @@ body{
   color: #F6645C;
   margin-left: 5rem;
 }
+#iconBx{
+  margin-left: 1rem;
+  color: #faf4f4;
+  cursor: pointer;
+}
+
 .currentPlayerTitle.blue{
   
   color: #029FEC;

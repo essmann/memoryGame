@@ -2,9 +2,9 @@ import Hamburger from 'hamburger-react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import RangeSlider from 'react-range-slider-input';
-
+import { IconBxRefresh } from './RefreshIcon';
  
-function Header({setNumCards, settings, currentPlayer, score, showHint}) {
+function Header({setNumCards, settings, currentPlayer, score, showHint, resetGame}) {
 
     function test(input){
     
@@ -25,6 +25,7 @@ function Header({setNumCards, settings, currentPlayer, score, showHint}) {
             <br></br>
             <div className={`currentPlayerTitle ${currentPlayer == 2 ? "red" : "blue"}`}>{currentPlayer==2 ? "Red" : "Blue"}</div>
             <button onClick={showHint}>Show hint</button>
+            <IconBxRefresh width={24} height={24} id='iconBx' onClick={resetGame} />
             <Hamburger  toggled={dropDownOpen} toggle={setDropDownOpen} />
             
         </div>
