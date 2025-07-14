@@ -33,13 +33,60 @@ body{
 .scoreCount{
   font-size: 1.5em;
   margin-left: 15px;
+        z-index: 1; /* Ensure text stays on top */
 }
 
-#player_1_score{
+.scoreCount.turn.red, .scoreCount.turn.blue{
+      
+       position: relative;
+      display: inline-block;
+            z-index: 1; /* Ensure text stays on top */
+}
+.scoreCount.turn.red::after{
+  content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1.2em;
+      height: 1.2em;
+      background-color: rgb(197, 44, 44); /* or any bg you want */
+      border-radius: 50%;
+      pointer-events: none;
+      box-sizing: border-box;
+      z-index: -1; /* Keep it behind the text */
+}
+
+.scoreCount.turn.blue::after{
+  content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1.2em;
+      height: 1.2em;
+      background-color: rgb(26, 61, 136); /* or any bg you want */
+      border-radius: 50%;
+      pointer-events: none;
+      box-sizing: border-box;
+      z-index: -1; /* Keep it behind the text */
+}
+
+#player_2_score{
   color: #F6645C;
 }
-#player_2_score{
+#player_1_score{
   color: #029FEC;
+}
+.currentPlayerTitle.red{
+  
+  color: #F6645C;
+  margin-left: 5rem;
+}
+.currentPlayerTitle.blue{
+  
+  color: #029FEC;
+  margin-left: 5rem;
 }
 .hamburger-react{
   margin-left: auto;
@@ -87,6 +134,7 @@ background: linear-gradient(135deg, #681111, #3c2a4d, #1a1a1a);}
 .card.flipped {
   /* show front face */
   transform: rotateY(180deg);
+  background: linear-gradient(145deg, #fff7fc, #726f6f, #1c1c1c);
 }
 .card.matched {
   /* maybe lower opacity or disable pointer */

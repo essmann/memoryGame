@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import RangeSlider from 'react-range-slider-input';
 
  
-function Header({setNumCards, settings}) {
+function Header({setNumCards, settings, currentPlayer, score}) {
 
     function test(input){
     
@@ -20,9 +20,10 @@ function Header({setNumCards, settings}) {
     }, [dropDownOpen]); // This effect runs when dropDownOpen changes, you can add logic here if needed
     return (
         <div id="header" className="">
-            <div className='scoreCount' id='player_1_score'>{row}</div>
-            <div className='scoreCount' id='player_2_score'>{col}</div>
-            <div id='header_title'>Essmann's memory</div>
+            {currentPlayer == 2 ? <div className='scoreCount turn red' id='player_2_score'>{score[2]}</div> : <div className='scoreCount' id='player_2_score'>{score[2]}</div>}
+            {currentPlayer == 1 ? <div className='scoreCount turn blue' id='player_1_score'>{score[1]}</div> : <div className='scoreCount ' id='player_1_score'>{score[1]}</div>}
+            <br></br>
+            <div className={`currentPlayerTitle ${currentPlayer == 2 ? "red" : "blue"}`}>{currentPlayer==2 ? "Red" : "Blue"}</div>
             <Hamburger  toggled={dropDownOpen} toggle={setDropDownOpen} />
             
         </div>
