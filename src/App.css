@@ -120,8 +120,15 @@ background: linear-gradient(135deg, #681111, #3c2a4d, #1a1a1a);}
   justify-content: center;
   margin-bottom: 4rem;
 }
-
-
+.card_container_wrapper {
+  transition: background 0.8s ease-in-out;
+}
+.card_container_wrapper.turn-1 {
+ background: linear-gradient(135deg, #114868, #3c2a4d, #1a1a1a);
+}
+.card_container_wrapper.turn-2 {
+  background: linear-gradient(135deg, #681111, #3c2a4d, #1a1a1a);
+}
 /* CARD */
 
 .card {
@@ -140,7 +147,7 @@ background: linear-gradient(135deg, #681111, #3c2a4d, #1a1a1a);}
 .card.flipped {
   /* show front face */
   transform: rotateY(180deg);
-  background: linear-gradient(145deg, #fff7fc, #726f6f, #1c1c1c);
+  background: linear-gradient(145deg, #130101, #241525, #1c1c1c);
 }
 .card.matched {
   /* maybe lower opacity or disable pointer */
