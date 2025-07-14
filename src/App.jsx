@@ -32,7 +32,62 @@ function App() {
     shuffle(_cards);
     setCards(_cards);
   }, [numCards]);
+const resetGame = () => {
+  setPlayerScores({ 1: 0, 2: 0 });
 
+  // Switch starting player each game
+  setCurrentPlayer(prev => (prev === 1 ? 2 : 1));
+
+  // Re-generate cards (you can reuse your existing logic)
+  const baseIcons = ["♠️", "♥️", "♦️", "♣️", "⭐", "🌟", "🔥", "💧", "🍀", "🎲", "🎯", "🎵", "🚀", "🌈", "🍎"];
+  const selectedIcons = baseIcons.slice(0, numCards / 2);
+  const _cards = [];
+
+  shuffle(selectedIcons).forEach((icon, i) => {
+    _cards.push({ id: i * 2 + 1, icon, flipped: false, matched: false });
+    _cards.push({ id: i * 2 + 2, icon, flipped: false, matched: false });
+  });
+
+  shuffle(_cards);
+  setCards(_cards);
+  setFlippedCards([]);
+};
+
+const showHint = () => {
+  // Temporarily flip all unmatched cards
+  setCards(prevCards => 
+    prevCards.map(card => 
+      card.matched ? card : {...card, flipped: true}
+    )
+  );
+
+  // Flip them back after 3 seconds
+  setTimeout(() => {
+    setCards(prevCards => 
+      prevCards.map(card => 
+        card.matched ? card : {...card, flipped: false}
+      )
+    );
+  }, 3000);
+};
+  useEffect(() => {
+  if (cards.length > 0 && cards.every(card => card.matched)) {
+    // Game over!
+    // Determine winner by comparing scores
+    if (playerScores[1] > playerScores[2]) {
+      alert(`Player 1 wins with ${playerScores[1]} points! 🎉`);
+    } else if (playerScores[2] > playerScores[1]) {
+      alert(`Player 2 wins with ${playerScores[2]} points! 🎉`);
+    } else {
+      alert("It's a tie! 🤝");
+    }
+
+    // Optionally, reset the game or offer a restart
+    setTimeout(() => {
+      resetGame();
+    }, 500);
+  }
+}, [cards, playerScores]);
   const shuffle = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -110,7 +165,7 @@ const handleClick = async (index) => {
 
   return (
     <>
-      <Header setNumCards={setNumCards} settings={GLOBAL_SETTINGS} currentPlayer = {currentPlayer} score = {playerScores} />
+      <Header setNumCards={setNumCards} settings={GLOBAL_SETTINGS} currentPlayer = {currentPlayer} score = {playerScores} showHint = {showHint}/>
 
       <div className='card_container_wrapper'>
         <div className='card_container'>

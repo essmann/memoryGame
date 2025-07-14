@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import RangeSlider from 'react-range-slider-input';
 
  
-function Header({setNumCards, settings, currentPlayer, score}) {
+function Header({setNumCards, settings, currentPlayer, score, showHint}) {
 
     function test(input){
     
@@ -24,6 +24,7 @@ function Header({setNumCards, settings, currentPlayer, score}) {
             {currentPlayer == 1 ? <div className='scoreCount turn blue' id='player_1_score'>{score[1]}</div> : <div className='scoreCount ' id='player_1_score'>{score[1]}</div>}
             <br></br>
             <div className={`currentPlayerTitle ${currentPlayer == 2 ? "red" : "blue"}`}>{currentPlayer==2 ? "Red" : "Blue"}</div>
+            <button onClick={showHint}>Show hint</button>
             <Hamburger  toggled={dropDownOpen} toggle={setDropDownOpen} />
             
         </div>
